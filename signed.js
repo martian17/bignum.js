@@ -77,3 +77,22 @@ var mul = function(a,b){
 };
 
 //now those are out of the way, we can now work on the fraction class and its client functions
+
+var mod = function(a,b){//return quotient and remainder
+    var quotient = [];
+    var remainder = [];
+    var ahead = a.length-1;
+    var bhead = b.length-1;
+    while(true){
+        for(var i = ahead; i >= bhead; i--){
+            //make a reasonably guess as to what to divide it with
+            var min = Math.floor(a[i]/(b[bhead]+1));
+            var max = Math.floor(i/b[bhead]);
+            for(var j = max; j >= min; j--){
+                //multiply b with j to get the val
+                var c = muli(b,j);
+                
+            }
+        }
+    }
+}

@@ -181,7 +181,40 @@ var mod = function(a,b){
     quotient = remove0s(quotient);
     remainder = remove0s(acanvas);
     return [quotient,remainder];
-}
+};
 
+var reverse = function(a){
+    for(var i = 0; i < a.length/2; i++){
+        var c = a[i];
+        a[i] = a[a.length-1-i];
+        a[a.length-1-i] = c;
+    }
+    return a;
+};
+
+var format = function(a){
+    return reverse((a+"").split("").map(b=>parseInt(b)));
+};
+
+var unformat = function(a){
+    return reverse(a).join("");
+};
+
+var formatAndExecute = function(func){
+    var arr = [];
+    for(var i = 1; i < arguments.length; i++){
+        arr.push(format(arguments[i]));
+    }
+    var result = func.apply(null,arr);
+    if(typeof result === "number"){
+        return result;
+    }else if(typeof result[0] === "number"){
+        return unformat(result);
+    }
+    return 
+};
+
+
+console.log(formatAndExecute(mod,18542,831));
 var result = mod([2,4,5,8,1],[1,3,8]);//18542/831   22,260
 console.log("result",result);
